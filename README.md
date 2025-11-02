@@ -239,13 +239,6 @@ These are used for real-time control and status updates.
 
 -----
 
-## 🧑‍💻 Contributors
-
-Developed by a Final Year B.Tech Computer Science Engineering student at VIT.
-
-Focus areas: Human-Computer Interaction, Computer Vision, and Assistive Systems Engineering.
-
------
 
 ## 🔮 Future Scope
 
