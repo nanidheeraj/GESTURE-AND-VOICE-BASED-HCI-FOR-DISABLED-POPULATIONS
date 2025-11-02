@@ -1,0 +1,291 @@
+{
+  "settings": {
+    "camera_index": 0,
+    "camera_width": 640,
+    "camera_height": 480,
+    "gesture_cooldown": 0.5,
+    "voice_cooldown": 0.5,
+    "voice_sample_rate": 16000
+  },
+  "gestures": {
+    "Pointing_Up": {
+      "name": "Pointing (Toggle Cursor)",
+      "action": "toggle_cursor"
+    },
+    "Index_Point": {
+      "name": "Index Finger Move Cursor",
+      "action": "move_cursor"
+    },
+    "Two_Fingers": {
+      "name": "Two Fingers Left Click",
+      "action": "left_click"
+    },
+    "Three_Fingers": {
+      "name": "Three Fingers Right Click",
+      "action": "right_click"
+    },
+    "Victory": {
+      "name": "Peace / Victory (2)",
+      "action": "scroll_down"
+    },
+    "ILoveYou": {
+      "name": "I Love You (3)",
+      "action": "scroll_up"
+    },
+    "Open_Palm": {
+      "name": "Open Palm / Stop",
+      "action": "maximize_window"
+    },
+    "Closed_Fist": {
+      "name": "Closed Fist",
+      "action": "minimize_window"
+    },
+    "Thumb_Up": {
+      "name": "Thumbs Up",
+      "action": "volume_up"
+    },
+    "Thumb_Down": {
+      "name": "Thumbs Down",
+      "action": "volume_down"
+    },
+    "Calling": {
+      "name": "Call Me",
+      "action": "open_browser"
+    },
+    "Palm_Left": {
+      "name": "Swipe Left",
+      "action": "previous_tab"
+    },
+    "Palm_Right": {
+      "name": "Swipe Right",
+      "action": "next_tab"
+    },
+    "Palm_Up": {
+      "name": "Palm Up",
+      "action": "scroll_up"
+    },
+    "Palm_Down": {
+      "name": "Palm Down",
+      "action": "scroll_down"
+    },
+    "OK_Sign": {
+      "name": "OK Sign",
+      "action": "open_notepad"
+    },
+    "Cross_Fingers": {
+      "name": "Cross Fingers",
+      "action": "close_window"
+    },
+    "Pinch_In": {
+      "name": "Pinch In",
+      "action": "zoom_out"
+    },
+    "Pinch_Out": {
+      "name": "Pinch Out",
+      "action": "zoom_in"
+    },
+    "Hand_Heart": {
+      "name": "Hand Heart",
+      "action": "open_file_explorer"
+    },
+    "Wrist_Rotate": {
+      "name": "Rotate Wrist",
+      "action": "refresh"
+    },
+    "Palm_Hold": {
+      "name": "Hold Palm Still",
+      "action": "start_voice_typing"
+    },
+    "Wave": {
+      "name": "Wave Hand",
+      "action": "stop_voice_typing"
+    },
+    "None": {
+      "name": "No Gesture",
+      "action": null
+    },
+    "sree": {
+      "name": "sree",
+      "action": "zoom_out"
+    },
+    "laxman": {
+      "name": "laxman",
+      "action": "zoom_in"
+    }
+  },
+  "voice_commands": {
+    "click": {
+      "command": "click",
+      "action": "left_click"
+    },
+    "double_click": {
+      "command": "double click",
+      "action": "double_click"
+    },
+    "right_click": {
+      "command": "right click",
+      "action": "right_click"
+    },
+    "open_browser": {
+      "command": "open browser",
+      "action": "open_browser"
+    },
+    "close_browser": {
+      "command": "close browser",
+      "action": "close_browser"
+    },
+    "new_tab": {
+      "command": "new tab",
+      "action": "new_tab"
+    },
+    "close_tab": {
+      "command": "close tab",
+      "action": "close_tab"
+    },
+    "next_tab": {
+      "command": "next tab",
+      "action": "next_tab"
+    },
+    "previous_tab": {
+      "command": "previous tab",
+      "action": "previous_tab"
+    },
+    "scroll_up": {
+      "command": "scroll up",
+      "action": "scroll_up"
+    },
+    "scroll_down": {
+      "command": "scroll down",
+      "action": "scroll_down"
+    },
+    "zoom_in": {
+      "command": "zoom in",
+      "action": "zoom_in"
+    },
+    "zoom_out": {
+      "command": "zoom out",
+      "action": "zoom_out"
+    },
+    "refresh": {
+      "command": ".",
+      "action": "refresh"
+    },
+    "open_notepad": {
+      "command": "open notepad",
+      "action": "open_notepad"
+    },
+    "open_files": {
+      "command": "open files",
+      "action": "open_file_explorer"
+    },
+    "open_settings": {
+      "command": "open settings",
+      "action": "open_settings"
+    },
+    "minimize": {
+      "command": "minimize",
+      "action": "minimize_window"
+    },
+    "maximize": {
+      "command": "maximize",
+      "action": "maximize_window"
+    },
+    "lock_screen": {
+      "command": "lock screen",
+      "action": "lock_screen"
+    },
+    "volume_up": {
+      "command": "volume up",
+      "action": "volume_up"
+    },
+    "volume_down": {
+      "command": "volume down",
+      "action": "volume_down"
+    },
+    "mute": {
+      "command": "mute",
+      "action": "volume_mute"
+    },
+    "brightness_up": {
+      "command": "brightness up",
+      "action": "brightness_up"
+    },
+    "brightness_down": {
+      "command": "brightness down",
+      "action": "brightness_down"
+    },
+    "copy": {
+      "command": "copy",
+      "action": "copy"
+    },
+    "paste": {
+      "command": "paste",
+      "action": "paste"
+    },
+    "cut": {
+      "command": "cut",
+      "action": "cut"
+    },
+    "undo": {
+      "command": "undo",
+      "action": "undo"
+    },
+    "redo": {
+      "command": "redo",
+      "action": "redo"
+    },
+    "save": {
+      "command": "save",
+      "action": "save"
+    },
+    "screenshot": {
+      "command": "screenshot",
+      "action": "screenshot"
+    },
+    "press_enter": {
+      "command": "enter",
+      "action": "press_enter"
+    },
+    "press_escape": {
+      "command": "escape",
+      "action": "press_escape"
+    },
+    "press_space": {
+      "command": "space",
+      "action": "press_space"
+    },
+    "type_start": {
+      "command": "start typing",
+      "action": "start_voice_typing"
+    },
+    "type_stop": {
+      "command": "stop typing",
+      "action": "stop_voice_typing"
+    },
+    "read_screen": {
+      "command": "read screen",
+      "action": "read_screen"
+    },
+    "open_mail": {
+      "command": "open mail",
+      "action": "open_mail"
+    },
+    "time": {
+      "command": "what time is it",
+      "action": "tell_time"
+    },
+    "date": {
+      "command": "what date is it",
+      "action": "tell_date"
+    },
+    "shutdown": {
+      "command": "shutdown system",
+      "action": "shutdown"
+    },
+    "restart": {
+      "command": "restart system",
+      "action": "restart"
+    }
+  },
+  "custom_gesture_data": {}
+}
