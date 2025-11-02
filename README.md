@@ -190,8 +190,6 @@ gesture-voice-hci/
 ├── voice_recognition.py    # Module for voice command processing
 ├── action_executor.py      # Module for executing system actions
 ├── config.json             # Stores user settings, gestures, and mappings
-├── requirements.txt        # Python dependencies
-│
 ├── templates/
 │   └── index.html          # Frontend web page (UI)
 │
