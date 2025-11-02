@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gesture & Voice HCI System</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      .customization-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .customization-table th,
+      .customization-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        vertical-align: middle; /* NEW: Align middle */
+      }
+      .customization-table th {
+        background-color: #f9f9f9;
+        font-weight: 500;
+      }
+      /* MODIFIED: Set column widths */
+      .customization-table th:nth-child(1) { width: 30%; }
+      .customization-table th:nth-child(2) { width: 50%; }
+      .customization-table th:nth-child(3) { width: 20%; }
+
+      .customization-table td {
+        background-color: #fff;
+      }
+      .customization-table select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1em;
+      }
+      .save-btn-container {
+        text-align: right;
+        margin-top: 20px;
+      }
+
+      /* --- NEW CSS FOR LEARN GESTURE --- */
+      .add-gesture-form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .add-gesture-form input[type="text"] {
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .status-message {
+        font-weight: bold;
+        margin-top: 10px;
+        min-height: 1.2em; /* NEW: Prevent layout shift */
+      }
+      .status-message.success {
+        color: green;
+      }
+      .status-message.error {
+        color: red;
+      }
+      .status-message.learning {
+        color: blue;
+      }
+      /* NEW: Small danger button */
+      .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .btn-danger:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1><span role="img" aria-label="controller">🎮</span> Gesture & Voice HCI System</h1>
+        <p>Real-Time Gesture and Voice Control</p>
+      </header>
+
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="dashboard" aria-current="page">
+          Dashboard
+        </button>
+        <button class="tab-btn" data-tab="gestures">Gestures</button>
+        <button class="tab-btn" data-tab="voice">Voice</button>
+        <button class="tab-btn" data-tab="settings">Settings</button>
+      </nav>
+
+      <main role="main">
+        <div id="dashboard" class="tab-content active">
+          <section class="card">
+            <h2>Live Camera Feed</h2>
+            <img
+              id="videoFeed"
+              src=""
+              alt="Camera Feed"
+              style="max-width: 100%; border-radius: 8px"
+            />
+          </section>
+
+          <section class="card">
+            <h2>Gesture Recognition</h2>
+            <div class="control-group">
+              <label>
+                <input type="checkbox" id="gestureToggle" />
+                Enable Gesture Recognition
+              </label>
+              <div id="gestureStatus" class="status">Status: Ready</div>
+              <div id="gestureResult" class="result"></div>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Voice Recognition</h2>
+            <div class="control-group">
+              <label>
+                <input type="checkbox" id="voiceToggle" />
+                Enable Voice Recognition
+              </label>
+              <div id="voiceStatus" class="status">Status: Ready</div>
+              <div id="voiceResult" class="result"></div>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Statistics</h2>
+            <div class="stats">
+              <div class="stat-item">
+                <span>Gestures Recognized:</span>
+                <strong id="gestureCount">0</strong>
+              </div>
+              <div class="stat-item">
+                <span>Commands Recognized:</span>
+                <strong id="commandCount">0</strong>
+              </div>
+              <div class="stat-item">
+                <span>Actions Executed:</span>
+                <strong id="actionCount">0</strong>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div id="gestures" class="tab-content">
+          <section class="card">
+            <h2>Gesture Configuration</h2>
+            <p>Map recognized gestures to specific actions. Pointing toggles cursor mode.</p>
+            <table id="gestureList" class="customization-table">
+              <thead>
+                <tr>
+                  <th>Gesture</th>
+                  <th>Action</th>
+                  <th>Controls</th> </tr>
+              </thead>
+              <tbody>
+                </tbody>
+            </table>
+            <div class="save-btn-container">
+              <button id="saveGesturesBtn" class="btn btn-primary">
+                Save Gesture Settings
+              </button>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Add New Gesture</h2>
+            <p>Add a new, custom gesture. Enable gesture recognition, type a name, and click 'Learn'.</p>
+            <div class="add-gesture-form">
+              <input type="text" id="new-gesture-name" placeholder="Enter new gesture name" />
+              <button id="learn-gesture-btn" class="btn btn-secondary">Learn New Gesture</button>
+            </div>
+            <p id="learn-status" class="status-message"></p>
+          </section>
+          </div>
+
+        <div id="voice" class="tab-content">
+          <section class="card">
+            <h2>Voice Command Configuration</h2>
+            <p>Map voice commands to specific actions.</p>
+            <table id="voiceList" class="customization-table">
+              <thead>
+                <tr>
+                  <th>Voice Command</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                </tbody>
+            </table>
+            <div class="save-btn-container">
+              <button id="saveVoiceBtn" class="btn btn-primary">
+                Save Voice Settings
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <div id="settings" class="tab-content">
+          <section class="card">
+            <h2>Settings & Configuration</h2>
+            <div class="settings-group">
+              <label>Camera Index:</label>
+              <input type="number" id="cameraIndex" value="0" min="0" />
+
+              <label>Camera Width:</label>
+              <input type="number" id="cameraWidth" value="640" min="320" />
+
+              <label>Camera Height:</label>
+              <input type="number" id="cameraHeight" value="480" min="240" />
+
+              <label>Gesture Cooldown (seconds):</label>
+              <input
+                type="number"
+                id="gestureCooldown"
+                value="1.0"
+                min="0.1"
+                step="0.1"
+              />
+
+              <label>Voice Cooldown (seconds):</label>
+              <input
+                type="number"
+                id="voiceCooldown"
+                value="0.5"
+                min="0.1"
+                step="0.1"
+              />
+
+              <button id="saveSettingsBtn" class="btn btn-primary">
+                Save General Settings
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          &copy; 2025 Gesture & Voice HCI System — Real-Time Control
+        </p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
